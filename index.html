@@ -13,12 +13,13 @@
   </div>
 
   <script src="https://unpkg.com/vue@2.5.17"></script>
-  <script src="./src/main.js"></script>
-  <script>
+  <script type="module">
+    import { addToDo, todoList } from './src/main.js'
+
     new Vue({
       el: '#todo',
       components: {
-        'add-todo': addTodo,
+        'add-todo': addToDo,
         'todo-list': todoList
       }
     })
