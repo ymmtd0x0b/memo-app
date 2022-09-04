@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="./index.css">
+  <title>ToDoアプリ</title>
+</head>
+<body>
+  <div id="todo">
+    <h1>ToDoアプリ</h1>
+    <add-todo></add-todo>
+    <todo-list></todo-list>
+  </div>
+
+  <script src="https://unpkg.com/vue@2.5.17"></script>
+  <script src="./src/main.js"></script>
+  <script>
+    new Vue({
+      el: '#todo',
+      components: {
+        'add-todo': addTodo,
+        'todo-list': todoList
+      }
+    })
+  </script>
+</body>
+</html>
