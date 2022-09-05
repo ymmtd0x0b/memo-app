@@ -3,9 +3,9 @@ import { switchingComponent } from './components/switchingComponent.js'
 
 const todo = new ToDo()
 
-export const addToDo = {
+export const todoAddForm = {
   template: `
-    <form @submit.prevent="addToDo">
+    <form @submit.prevent="add">
       <input v-model="newTodoText">
       <button>追加</button>
     </form>`,
@@ -15,7 +15,7 @@ export const addToDo = {
     }
   },
   methods: {
-    addToDo: function () {
+    add: function () {
       todo.create(this.newTodoText)
       this.newTodoText = ''
     }
@@ -25,7 +25,7 @@ export const addToDo = {
 export const todoList = {
   data: function () {
     return {
-      todos: this.readToDo()
+      todos: this.getToDos()
     }
   },
   template: `
@@ -35,8 +35,8 @@ export const todoList = {
         :key="todo.id"
         :title="todo.title"
         :idx="idx"
-        @remove="removeToDo"
-        @update="updateToDo"
+        @remove="remove"
+        @update="update"
       ></switching-component>
     </ul>
   `,
@@ -44,13 +44,13 @@ export const todoList = {
     'switching-component': switchingComponent
   },
   methods: {
-    readToDo: function () {
+    getToDos: function () {
       return todo.read()
     },
-    removeToDo: function (idx) {
+    remove: function (idx) {
       todo.remove(idx)
     },
-    updateToDo: function (idx, text) {
+    update: function (idx, text) {
       todo.update(idx, text)
     }
   }
