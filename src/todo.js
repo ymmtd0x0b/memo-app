@@ -4,6 +4,7 @@ export class ToDo {
 
   constructor () {
     this.#list = this.#init()
+
     const idx = this.#list.length - 1
     this.#nextId = idx >= 0 ? this.#list[idx].id + 1 : 0
   }
@@ -13,11 +14,11 @@ export class ToDo {
     return localData ? JSON.parse(localData) : []
   }
 
-  read () {
+  getList () {
     return this.#list
   }
 
-  create (text) {
+  add (text) {
     const newTodo = {
       id: this.#nextId++,
       title: text

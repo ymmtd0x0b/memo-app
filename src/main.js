@@ -1,51 +1,31 @@
 import { ToDo } from './todo.js'
-import { switchingComponent } from './components/switchingComponent.js'
+import todoListAddItem from './components/TodoListAddItem.js'
+import todoListShowItems from './components/TodoListShowItems.js'
 
 const todo = new ToDo()
 
-export const todoAddForm = {
-  template: `
-    <form @submit.prevent="add">
-      <input v-model="newTodoText">
-      <button>追加</button>
-    </form>`,
+export default {
   data: function () {
     return {
-      newTodoText: ''
-    }
-  },
-  methods: {
-    add: function () {
-      todo.create(this.newTodoText)
-      this.newTodoText = ''
-    }
-  }
-}
-
-export const todoList = {
-  data: function () {
-    return {
-      todos: this.getToDos()
+      todos: todo.getList()
     }
   },
   template: `
-    <ul>
-      <switching-component
-        v-for="(todo, idx) in todos"
-        :key="todo.id"
-        :title="todo.title"
-        :idx="idx"
+    <div>
+      <todo-list-add-item @add="add"></todo-list-add-item>
+      <todo-list-show-items
+        :todos="todos"
         @remove="remove"
         @update="update"
-      ></switching-component>
-    </ul>
-  `,
+      ></todo-list-show-items>
+    </div>`,
   components: {
-    'switching-component': switchingComponent
+    todoListAddItem,
+    todoListShowItems
   },
   methods: {
-    getToDos: function () {
-      return todo.read()
+    add: function (text) {
+      todo.add(text)
     },
     remove: function (idx) {
       todo.remove(idx)
