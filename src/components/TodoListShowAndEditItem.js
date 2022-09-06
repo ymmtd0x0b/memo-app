@@ -9,19 +9,19 @@ export default {
       :title="title"
       @remove="remove"
       @update="update"
-      @edit="changeModeEdit"
-      @back="changeModeShow"
+      @edit="changeStateEdit"
+      @back="changeStateShow"
     ></component>`,
   data: function () {
-    return { currentMode: 'show' }
+    return { currentState: 'show' }
   },
   components: {
-    'show-mode': todoListShowItem,
-    'edit-mode': todoListEditItem
+    'show-item': todoListShowItem,
+    'edit-item': todoListEditItem
   },
   computed: {
     currentComponent: function () {
-      return this.currentMode + '-mode'
+      return this.currentState + '-item'
     }
   },
   methods: {
@@ -30,13 +30,13 @@ export default {
     },
     update: function (text) {
       this.$emit('update', this.idx, text)
-      this.currentMode = 'show'
+      this.currentState = 'show'
     },
-    changeModeEdit: function () {
-      this.currentMode = 'edit'
+    changeStateEdit: function () {
+      this.currentState = 'edit'
     },
-    changeModeShow: function () {
-      this.currentMode = 'show'
+    changeStateShow: function () {
+      this.currentState = 'show'
     }
   }
 }

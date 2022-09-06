@@ -1,21 +1,21 @@
-import todoListToggleComponent from './TodoListToggleComponent.js'
+import todoListShowAndEditItem from './TodoListShowAndEditItem.js'
 
 export default {
   props: ['todos'],
   template: `
     <ul>
       <li v-for="(todo, idx) in todos" :key="todo.id">
-        <todo-list-toggle-component
+        <todo-list-show-and-edit-item
           :title="todo.title"
           :idx="idx"
           @remove="remove"
           @update="update"
-        ></todo-list-toggle-component>
+        ></todo-list-show-and-edit-item>
       </li>
     </ul>
   `,
   components: {
-    todoListToggleComponent
+    todoListShowAndEditItem
   },
   methods: {
     remove: function (idx) {
