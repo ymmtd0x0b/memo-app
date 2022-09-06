@@ -1,7 +1,12 @@
 import todoListShowAndEditItem from './TodoListShowAndEditItem.js'
 
 export default {
-  props: ['todos'],
+  props: {
+    todos: {
+      type: Array,
+      required: true
+    }
+  },
   template: `
     <ul>
       <li v-for="(todo, idx) in todos" :key="todo.id">

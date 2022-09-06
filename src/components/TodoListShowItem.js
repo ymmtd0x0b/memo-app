@@ -1,5 +1,10 @@
 export default {
-  props: ['title'],
+  props: {
+    title: {
+      type: String,
+      required: true
+    }
+  },
   template: `
     <div>
       <p>{{ title }}</p>

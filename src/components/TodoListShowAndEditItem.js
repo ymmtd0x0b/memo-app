@@ -2,7 +2,16 @@ import todoListShowItem from './TodoListShowItem.js'
 import todoListEditItem from './TodoListEditItem.js'
 
 export default {
-  props: ['title', 'idx'],
+  props: {
+    title: {
+      type: String,
+      required: true
+    },
+    idx: {
+      type: Number,
+      required: true
+    }
+  },
   template: `
     <component
       :is="currentComponent"
