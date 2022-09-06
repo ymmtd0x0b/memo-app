@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="./index.css">
+  <script src="https://unpkg.com/vue@2.5.17"></script>
   <title>ToDoアプリ</title>
 </head>
 <body>
@@ -11,16 +12,9 @@
     <todo-list></todo-list>
   </div>
 
-  <script src="https://unpkg.com/vue@2.5.17"></script>
   <script type="module">
-    import todoList from './src/main.js'
-
-    new Vue({
-      el: '#todo',
-      components: {
-        todoList
-      }
-    })
+    import todo from "./src/main.js"
+    new Vue(todo)
   </script>
 </body>
 </html>
