@@ -1,36 +1,38 @@
-import todoListAddItem from './TodoListAddItem.js'
-import todoListShowItems from './TodoListShowItems.js'
+import TodoListAddItem from './TodoListAddItem.js'
+import TodoListShowItems from './TodoListShowItems.js'
 
-export default function (todo) {
+const TodoList = function (todo) {
   return {
+    components: {
+      TodoListAddItem,
+      TodoListShowItems
+    },
     data: function () {
       return {
         todos: todo.getList()
       }
     },
-    template: `
-      <div>
-        <todo-list-add-item @add="add"></todo-list-add-item>
-        <todo-list-show-items
-          :todos="todos"
-          @remove="remove"
-          @update="update"
-        ></todo-list-show-items>
-      </div>`,
-    components: {
-      todoListAddItem,
-      todoListShowItems
-    },
     methods: {
-      add: function (text) {
+      addTodo (text) {
         todo.add(text)
       },
-      remove: function (idx) {
+      removeTodo (idx) {
         todo.remove(idx)
       },
-      update: function (idx, text) {
+      updateTodo (idx, text) {
         todo.update(idx, text)
       }
-    }
+    },
+    template: `
+      <div>
+        <TodoListAddItem @add-todo="addTodo"></TodoListAddItem>
+        <TodoListShowItems
+          :todos="todos"
+          @remove-todo="removeTodo"
+          @update-todo="updateTodo"
+        ></TodoListShowItems>
+      </div>`
   }
 }
+
+export default TodoList

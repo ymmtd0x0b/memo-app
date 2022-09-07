@@ -1,33 +1,34 @@
-import todoListShowAndEditItem from './TodoListShowAndEditItem.js'
+import TodoListToggleStateToShowAndEditItem from './TodoListToggleStateToShowAndEditItem.js'
 
-export default {
+const TodoListShowItems = {
+  components: {
+    TodoListToggleStateToShowAndEditItem
+  },
   props: {
     todos: {
       type: Array,
       required: true
     }
   },
+  methods: {
+    removeTodo (idx) {
+      this.$emit('remove-todo', idx)
+    },
+    updateTodo (idx, text) {
+      this.$emit('update-todo', idx, text)
+    }
+  },
   template: `
     <ul>
       <li v-for="(todo, idx) in todos" :key="todo.id">
-        <todo-list-show-and-edit-item
-          :title="todo.title"
-          :idx="idx"
-          @remove="remove"
-          @update="update"
-        ></todo-list-show-and-edit-item>
+        <TodoListToggleStateToShowAndEditItem
+          :todo-title="todo.title"
+          :todo-list-index="idx"
+          @remove-todo="removeTodo"
+          @update-todo="updateTodo"
+        ></TodoListToggleStateToShowAndEditItem>
       </li>
-    </ul>
-  `,
-  components: {
-    todoListShowAndEditItem
-  },
-  methods: {
-    remove: function (idx) {
-      this.$emit('remove', idx)
-    },
-    update: function (idx, text) {
-      this.$emit('update', idx, text)
-    }
-  }
+    </ul>`
 }
+
+export default TodoListShowItems

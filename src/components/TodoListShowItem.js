@@ -1,14 +1,16 @@
-export default {
+const TodoListShowItem = {
   props: {
-    title: {
+    todoTitle: {
       type: String,
       required: true
     }
   },
   template: `
     <div>
-      <p>{{ title }}</p>
-      <button @click="$emit('edit')">編集</button>
-      <button @click="$emit('remove')">削除</button>
+      <p>{{ todoTitle }}</p>
+      <button @click="$emit('edit-todo')">編集</button>
+      <button @click="$emit('remove-todo')">削除</button>
     </div>`
 }
+
+export default TodoListShowItem
