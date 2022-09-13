@@ -1,0 +1,24 @@
+{
+  "name": "memo-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ymmtd0x0b/memo-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ymmtd0x0b/memo-app/issues"
+  },
+  "homepage": "https://github.com/ymmtd0x0b/memo-app#readme",
+  "devDependencies": {
+    "eslint": "^8.23.0",
+    "eslint-plugin-vue": "^9.4.0",
+    "standard": "^17.0.0"
+  }
+}

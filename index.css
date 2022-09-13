@@ -1,0 +1,16 @@
+input {
+  display: inline-block;
+  width: 150px;
+}
+
+li {
+  display: block;
+  margin-bottom: 5px;
+}
+
+li p {
+  display: inline-block;
+  width: 150px;
+  margin: 0;
+  padding: 0 4px;
+}
